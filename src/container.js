@@ -22,7 +22,7 @@ container.loadModules(
         "controllers/*.js",
         "repositories/*.js",
         "models/*.js",
-        "shared/*.js",
+        "../shared/*.js",
     ],
     {
         formatName: "camelCase",
@@ -37,7 +37,7 @@ container.register({
     containerMiddleware: asValue(scopePerRequest(container)),
 });
 
-console.debug("Loaded Modules:");
-console.debug(container.registrations);
+// console.debug("Loaded Modules:");
+// console.debug(container.registrations);
 
 module.exports = container;

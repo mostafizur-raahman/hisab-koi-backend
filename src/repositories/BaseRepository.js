@@ -30,6 +30,15 @@ class BaseRepository {
         this.modelName = model.modelName;
     }
 
+    cleanResponse(entity, sensitiveFields = []) {
+        const entityObject = entity.toObject ? entity.toObject() : entity;
+        // Destructure to remove sensitive fields from the entity
+        const cleanedEntity = { ...entityObject };
+        sensitiveFields.forEach((field) => delete cleanedEntity[field]);
+
+        return cleanedEntity;
+    }
+
     /**
      * Creates an ObjectId from a string.
      * Uses new mechanism to create ObjectId instead of mongoose.Types.ObjectId
