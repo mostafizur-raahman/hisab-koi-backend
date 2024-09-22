@@ -15,7 +15,10 @@ class NodeMailer {
                 user: process.env.SMTP_USER,
                 pass: process.env.SMTP_PASS,
             },
+            name: "Yaqeen Tech Solutions",
         };
+
+        console.debug("SMTP ", this.SMTP);
 
         this.transporter = null; // Initialize transporter as null
     }
@@ -46,7 +49,8 @@ class NodeMailer {
             await this.init(); // Ensure transporter is initialized
 
             const info = await this.transporter.sendMail({
-                from: this.SMTP.auth.user, // Sender's email
+                // from: { email: this.SMTP.auth.user, name: this.SMTP.name }, // Sender's email
+                from: { name: this.SMTP.name, address: this.SMTP.auth.user },
                 to: to.join(", "), // List of recipients
                 subject: subject,
                 html: body, // Email body in HTML format

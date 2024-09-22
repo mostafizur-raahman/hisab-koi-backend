@@ -13,7 +13,7 @@ class UserRepository extends BaseRepository {
             },
             password: { type: "string" },
             confirmPassword: { type: "string" },
-            role: { type: "string", format: "objectId" },
+            role: { type: "string" },
             profession: { type: "string" },
             gender: {
                 type: "string",
@@ -41,7 +41,6 @@ class UserRepository extends BaseRepository {
                     "loginType",
                     "password",
                     "confirmPassword",
-                    "role",
                     "profession",
                     "gender",
                     "image",
@@ -57,6 +56,22 @@ class UserRepository extends BaseRepository {
                 additionalProperties: false,
             },
         };
+
+        this.projection = {
+            negative: {
+                __v: 0,
+                isDeleted: 0,
+                states: 0,
+                createdBy: 0,
+                otp: 0,
+            },
+        };
+    }
+
+    constructSearchQuery(query) {
+        const searchFields = [{ name: { $regex: query, $options: "i" } }];
+
+        return searchFields;
     }
 }
 
