@@ -15,7 +15,7 @@ class NodeMailer {
                 user: process.env.SMTP_USER,
                 pass: process.env.SMTP_PASS,
             },
-            name: "Yaqeen Tech Solutions",
+            name: "MUHASIB",
         };
 
         console.debug("SMTP ", this.SMTP);
