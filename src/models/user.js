@@ -13,8 +13,8 @@ module.exports = generateModel({
         password: String,
         confirmPassword: String,
         role: {
-            type: mongoose.Schema.Types.ObjectId,
-            role: "Role",
+            type: String,
+            default: "User",
         },
         profession: String,
         gender: {

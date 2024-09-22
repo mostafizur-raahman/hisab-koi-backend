@@ -13,7 +13,7 @@ class UserRepository extends BaseRepository {
             },
             password: { type: "string" },
             confirmPassword: { type: "string" },
-            role: { type: "string", format: "objectId" },
+            role: { type: "string" },
             profession: { type: "string" },
             gender: {
                 type: "string",
@@ -41,7 +41,6 @@ class UserRepository extends BaseRepository {
                     "loginType",
                     "password",
                     "confirmPassword",
-                    "role",
                     "profession",
                     "gender",
                     "image",
