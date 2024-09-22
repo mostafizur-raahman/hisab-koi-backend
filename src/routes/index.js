@@ -1,5 +1,5 @@
 const { Router } = require("express");
-
+const authenticate = require("../../shared/auth");
 const userRoutes = require("./user");
 
 const routes = () => {
@@ -7,7 +7,7 @@ const routes = () => {
 
     console.debug("User route calling....");
 
-    router.use("/v1/user", userRoutes());
+    router.use("/v1/user", userRoutes({ authenticate }));
 
     return router;
 };
