@@ -1,12 +1,12 @@
 const BaseRepository = require("./BaseRepository");
 
-class IncomeRepository extends BaseRepository {
+class ExpenseRepository extends BaseRepository {
     constructor({ models }) {
-        super(models.Income);
+        super(models.Expense);
 
         this.payload = {
             userId: { type: "string", format: "objectId" },
-            incomeAmount: { type: "number", minimum: 1 },
+            expenseAmount: { type: "number", minimum: 1 },
             reason: { type: "string" },
         };
 
@@ -14,7 +14,7 @@ class IncomeRepository extends BaseRepository {
             create: {
                 type: "object",
                 properties: this.payload,
-                required: ["userId", "incomeAmount", "reason"],
+                required: ["userId", "expenseAmount", "reason"],
                 additionalProperties: false,
             },
             update: {
@@ -42,4 +42,4 @@ class IncomeRepository extends BaseRepository {
     }
 }
 
-module.exports = IncomeRepository;
+module.exports = ExpenseRepository;

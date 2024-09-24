@@ -2,13 +2,13 @@ const { mongo, default: mongoose } = require("mongoose");
 const { generateModel } = require("./baseModel");
 
 module.exports = generateModel({
-    modelName: "Income",
+    modelName: "Expense",
     schema: {
         userId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
         },
-        incomeAmount: Number,
+        expenseAmount: Number,
         reason: String,
         date: {
             type: Date,
